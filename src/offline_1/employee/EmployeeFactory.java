@@ -7,9 +7,9 @@ package offline_1.employee;
 
 public class EmployeeFactory {
 
-    public Employee createEmployee( EmployeeType employeeType ) {
+    public Employee createEmployee( String employeeName, EmployeeType employeeType ) {
 
-        Employee employee = new Employee(employeeType);
+        Employee employee = new Employee(employeeName, employeeType);
 
         if (employeeType == EmployeeType.MANAGING_DIRECTOR) {
             employee.addEmployeeRole("Approve Loan");

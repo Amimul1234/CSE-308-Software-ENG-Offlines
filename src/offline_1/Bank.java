@@ -31,13 +31,19 @@ public class Bank {
         return bank;
     }
 
-    public Bank() {
-        totalBankBalance = 1000000.0;
+    private Bank() {
+
         totalLoan = 0.0;
+        totalBankBalance = 1000000.0;
+
         employeeFactory = new EmployeeFactory();
         accountList = new LinkedList<>();
         employeeList = new LinkedList<>();
         loanRequestList = new LinkedList<>();
+
+        String employeeInstantiation = populateEmployees();
+
+        System.out.println("Bank Created; " + employeeInstantiation);
     }
 
     public String addNewAccountToBank( Account account ) {
@@ -49,9 +55,25 @@ public class Bank {
                 + account.getDepositAmount() + "$";
     }
 
-    public String createEmployee( EmployeeType employeeType ) {
-        employeeList.add(employeeFactory.createEmployee(employeeType));
-        return employeeType.getEmployeeType();
+    public String addNewEmployee( String employeeName, EmployeeType employeeType ) {
+        employeeList.add(employeeFactory.createEmployee(employeeName, employeeType));
+        return employeeName;
+    }
+
+    private String populateEmployees() {
+
+        String m_d = addNewEmployee("M D", EmployeeType.MANAGING_DIRECTOR);
+
+        String o1 = addNewEmployee("O1", EmployeeType.OFFICER);
+        String o2 = addNewEmployee("O2", EmployeeType.OFFICER);
+
+        String c1 = addNewEmployee("C1", EmployeeType.CASHIER);
+        String c2 = addNewEmployee("C2", EmployeeType.CASHIER);
+        String c3 = addNewEmployee("C3", EmployeeType.CASHIER);
+        String c4 = addNewEmployee("C4", EmployeeType.CASHIER);
+        String c5 = addNewEmployee("C5", EmployeeType.CASHIER);
+
+        return m_d + ", " + o1 + ", " + o2 + ", " + c1 + ", " + c2 + ", " + c3 + ", " + c4 + ", " + c5 + " created";
     }
 
     public int checkForAccountUsingUserName( String userName ) {

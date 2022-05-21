@@ -10,10 +10,12 @@ import java.util.List;
 
 public class Employee {
 
+    private String employeeName;
     private final EmployeeType employeeType;
     private final List<String> employeeRoles;
 
-    public Employee( EmployeeType employeeType ) {
+    public Employee( String employeeName, EmployeeType employeeType ) {
+        this.employeeName = employeeName;
         this.employeeType = employeeType;
         employeeRoles = new LinkedList<>();
     }
