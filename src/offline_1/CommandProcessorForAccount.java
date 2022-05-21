@@ -10,7 +10,7 @@ import offline_1.account.services.imp.*;
  * @project CSE-308-offlines
  */
 
-public class CommandProcessor {
+public class CommandProcessorForAccount {
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -23,7 +23,7 @@ public class CommandProcessor {
     private final LoanService loanService;
     private final CreateAccountService createAccountService;
 
-    public CommandProcessor() {
+    public CommandProcessorForAccount() {
         bank = Bank.getInstance();
 
         loanService = new LoanServiceImp();

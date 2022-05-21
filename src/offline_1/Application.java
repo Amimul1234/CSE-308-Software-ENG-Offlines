@@ -9,14 +9,15 @@ import java.util.Scanner;
 
 public class Application {
 
-    private static CommandProcessor commandProcessor;
+    private static Bank bank;
     private static Scanner scanner;
+    private static CommandProcessorForAccount commandProcessorForAccount;
 
     public static void main( String[] args ) {
 
-        Bank bank = Bank.getInstance();
+        bank = Bank.getInstance();
         scanner = new Scanner(System.in);
-        commandProcessor = new CommandProcessor();
+        commandProcessorForAccount = new CommandProcessorForAccount();
 
         processInputs();
     }
@@ -30,17 +31,28 @@ public class Application {
 
     private static void decideCommand( String command ) {
         if (command.contains("Create"))
-            System.out.println(commandProcessor.createNewAccount(command));
-        else if (command.contains("Deposit"))
-            System.out.println(commandProcessor.depositToAccount(command));
-        else if (command.contains("Withdraw"))
-            System.out.println(commandProcessor.withDrawAmount(command));
-        else if (command.contains("Query"))
-            System.out.println(commandProcessor.queryForAmount());
-        else if(command.contains("Request"))
-            System.out.println(commandProcessor.requestForLoan(command));
-        else if(command.contains("Close"))
-            System.out.println(commandProcessor.closeCurrentSession());
+            openSessionForAccounts(command);
+        else if (command.contains("Open"))
+            decideSession(command);
     }
 
+    //TODO: Decide for whom session should be opned.
+    private static void decideSession( String command ) {
+
+    }
+
+    private static void openSessionForAccounts( String command ) {
+        if (command.contains("Create"))
+            System.out.println(commandProcessorForAccount.createNewAccount(command));
+        else if (command.contains("Deposit"))
+            System.out.println(commandProcessorForAccount.depositToAccount(command));
+        else if (command.contains("Withdraw"))
+            System.out.println(commandProcessorForAccount.withDrawAmount(command));
+        else if (command.contains("Query"))
+            System.out.println(commandProcessorForAccount.queryForAmount());
+        else if (command.contains("Request"))
+            System.out.println(commandProcessorForAccount.requestForLoan(command));
+        else if (command.contains("Close"))
+            System.out.println(commandProcessorForAccount.closeCurrentSession());
+    }
 }
