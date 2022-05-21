@@ -2,6 +2,7 @@ package offline_1;
 
 import offline_1.account.Account;
 import offline_1.account.LoanRequest;
+import offline_1.employee.Employee;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Bank {
     private Double totalBankBalance;
     private Double totalLoan;
     private static Bank bank;
+    private final List<Employee> employeeList;
     private final List<Account> accountList;
     private final List<LoanRequest> loanRequestList;
 
@@ -27,7 +29,10 @@ public class Bank {
     }
 
     public Bank() {
+        totalBankBalance = 1000000.0;
+        totalLoan = 0.0;
         accountList = new LinkedList<>();
+        employeeList = new LinkedList<>();
         loanRequestList = new LinkedList<>();
     }
 
@@ -69,5 +74,4 @@ public class Bank {
     public void addLoanRequest( LoanRequest loanRequest ) {
         loanRequestList.add(loanRequest);
     }
-
 }
