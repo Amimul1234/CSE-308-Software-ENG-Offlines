@@ -19,7 +19,7 @@ public class LoanServiceImp implements LoanService {
     }
 
     @Override
-    public String loanRequest( Account account, Double loanAmount ) {
+    public String loanRequestApprove( Account account, Double loanAmount ) {
         switch (account.getAccountType()) {
             case SAVINGS -> {
                 if (loanAmount > 10000)

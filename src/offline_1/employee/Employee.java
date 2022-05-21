@@ -29,6 +29,4 @@ public class Employee {
     public List<String> getEmployeeRoles() {
         return employeeRoles;
     }
-
-
 }

@@ -1,6 +1,7 @@
 package offline_1.account.services;
 
 import offline_1.account.Account;
+import offline_1.employee.Employee;
 
 /**
  * @author Amimul Ehsan
@@ -8,5 +9,5 @@ import offline_1.account.Account;
  */
 
 public interface LoanService {
-    String loanRequest( Account account, Double loanAmount );
+    String loanRequestApprove( Employee employee, Account account );
 }
