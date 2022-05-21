@@ -1,10 +1,11 @@
 package offline_1;
 
+import offline_1.account.constants.AccountType;
 import offline_1.account.domain.Account;
 import offline_1.account.domain.LoanRequest;
+import offline_1.employee.constants.EmployeeType;
 import offline_1.employee.domain.Employee;
 import offline_1.employee.factory.EmployeeFactory;
-import offline_1.employee.constants.EmployeeType;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Bank {
     private Double totalLoan;
     private Double totalBankBalance;
     private EmployeeFactory employeeFactory;
+
     private final List<Account> accountList;
     private final List<Employee> employeeList;
     private final List<LoanRequest> loanRequestList;
@@ -49,7 +51,11 @@ public class Bank {
     public String addNewAccountToBank( Account account ) {
 
         accountList.add(account);
-        bank.setTotalBankBalance(bank.getTotalBankBalance() + account.getDepositAmount());
+
+        if (account.getAccountType() != AccountType.LOAN)
+            bank.setTotalBankBalance(bank.getTotalBankBalance() + account.getDepositAmount());
+        else
+            bank.setTotalLoan(bank.getTotalLoan() + account.getLoan());
 
         return account.getAccountType().getAccountType() + " account for " + account.getUserName() + " Created; initial balance "
                 + account.getDepositAmount() + "$";
