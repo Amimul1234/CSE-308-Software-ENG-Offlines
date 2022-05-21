@@ -1,6 +1,6 @@
 package offline_1.account.services;
 
-import offline_1.account.Account;
+import offline_1.account.domain.Account;
 
 /**
  * @author Amimul Ehsan

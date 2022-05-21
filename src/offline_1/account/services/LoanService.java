@@ -1,7 +1,7 @@
 package offline_1.account.services;
 
-import offline_1.account.Account;
-import offline_1.employee.Employee;
+import offline_1.account.domain.Account;
+import offline_1.employee.domain.Employee;
 
 /**
  * @author Amimul Ehsan

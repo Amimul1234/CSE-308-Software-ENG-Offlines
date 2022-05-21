@@ -1,4 +1,4 @@
-package offline_1.employee;
+package offline_1.employee.constants;
 
 /**
  * @author Amimul Ehsan

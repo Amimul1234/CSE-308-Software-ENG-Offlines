@@ -1,10 +1,10 @@
 package offline_1;
 
-import offline_1.account.Account;
-import offline_1.account.LoanRequest;
-import offline_1.employee.Employee;
-import offline_1.employee.EmployeeFactory;
-import offline_1.employee.EmployeeType;
+import offline_1.account.domain.Account;
+import offline_1.account.domain.LoanRequest;
+import offline_1.employee.domain.Employee;
+import offline_1.employee.factory.EmployeeFactory;
+import offline_1.employee.constants.EmployeeType;
 
 import java.util.LinkedList;
 import java.util.List;

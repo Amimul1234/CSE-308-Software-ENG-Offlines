@@ -1,7 +1,7 @@
 package offline_1.account.services.imp;
 
 import offline_1.Bank;
-import offline_1.account.Account;
+import offline_1.account.domain.Account;
 import offline_1.account.services.WithDrawService;
 
 /**

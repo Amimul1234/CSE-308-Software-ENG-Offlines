@@ -1,6 +1,6 @@
 package offline_1.account.services;
 
-import offline_1.account.AccountType;
+import offline_1.account.constants.AccountType;
 
 /**
  * @author Amimul Ehsan

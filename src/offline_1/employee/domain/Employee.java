@@ -1,4 +1,6 @@
-package offline_1.employee;
+package offline_1.employee.domain;
+
+import offline_1.employee.constants.EmployeeType;
 
 import java.util.LinkedList;
 import java.util.List;

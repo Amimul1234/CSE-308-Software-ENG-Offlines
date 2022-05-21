@@ -1,8 +1,8 @@
 package offline_1.employee.service.imp;
 
 import offline_1.Bank;
-import offline_1.account.Account;
-import offline_1.employee.Employee;
+import offline_1.account.domain.Account;
+import offline_1.employee.domain.Employee;
 import offline_1.employee.service.LookUpService;
 
 import java.util.Optional;

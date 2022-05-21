@@ -1,4 +1,7 @@
-package offline_1.employee;
+package offline_1.employee.factory;
+
+import offline_1.employee.domain.Employee;
+import offline_1.employee.constants.EmployeeType;
 
 /**
  * @author Amimul Ehsan

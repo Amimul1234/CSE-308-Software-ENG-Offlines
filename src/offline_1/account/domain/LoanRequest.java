@@ -1,4 +1,4 @@
-package offline_1.account;
+package offline_1.account.domain;
 
 /**
  * @author Amimul Ehsan

@@ -1,8 +1,8 @@
 package offline_1.account.services.imp;
 
 import offline_1.Bank;
-import offline_1.account.Account;
-import offline_1.account.AccountType;
+import offline_1.account.domain.Account;
+import offline_1.account.constants.AccountType;
 import offline_1.account.services.CreateAccountService;
 
 /**

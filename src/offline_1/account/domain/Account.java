@@ -1,4 +1,6 @@
-package offline_1.account;
+package offline_1.account.domain;
+
+import offline_1.account.constants.AccountType;
 
 /**
  * @author Amimul Ehsan
