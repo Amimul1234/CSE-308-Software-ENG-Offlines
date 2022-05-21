@@ -20,8 +20,8 @@ public class WithDrawImp implements WithDraw {
     @Override
     public String withDrawFromAccount( Account account, Double withDrawAmount ) {
 
-        if (account.getTotalAmount() < withDrawAmount)
-            return "Invalid transaction; current balance " + account.getTotalAmount() + "$";
+        if (account.getDepositAmount() < withDrawAmount)
+            return "Invalid transaction; current balance " + account.getDepositAmount() + "$";
 
         switch (account.getAccountType()) {
             case STUDENT -> {
@@ -29,7 +29,7 @@ public class WithDrawImp implements WithDraw {
                     return "Invalid transaction. Student account can not with draw more than 10,000$ in one transaction";
 
                 bank.setTotalBankBalance(bank.getTotalBankBalance() - withDrawAmount);
-                account.setTotalAmount(account.getTotalAmount() - withDrawAmount);
+                account.setDepositAmount(account.getDepositAmount() - withDrawAmount);
                 return successfulWithDrawMessage(account);
             }
             case FIXED_DEPOSIT -> {
@@ -37,17 +37,17 @@ public class WithDrawImp implements WithDraw {
                     return "Account must reach to maturity period of one year to withdraw";
 
                 bank.setTotalBankBalance(bank.getTotalBankBalance() - withDrawAmount);
-                account.setTotalAmount(account.getTotalAmount() - withDrawAmount);
+                account.setDepositAmount(account.getDepositAmount() - withDrawAmount);
                 return successfulWithDrawMessage(account);
             }
             case SAVINGS -> {
-                double currentAmountIfWithDrawn = account.getTotalAmount() - withDrawAmount;
+                double currentAmountIfWithDrawn = account.getDepositAmount() - withDrawAmount;
 
                 if (currentAmountIfWithDrawn < 1000)
                     return "Invalid transaction. Savings account must have at least 1000$ in account after withdrawal.";
 
                 bank.setTotalBankBalance(bank.getTotalBankBalance() - withDrawAmount);
-                account.setTotalAmount(account.getTotalAmount() - withDrawAmount);
+                account.setDepositAmount(account.getDepositAmount() - withDrawAmount);
                 return successfulWithDrawMessage(account);
             }
             case LOAN -> {
@@ -60,6 +60,6 @@ public class WithDrawImp implements WithDraw {
     }
 
     private String successfulWithDrawMessage( Account account ) {
-        return "Withdraw success! Current balance is : " + account.getTotalAmount();
+        return "Withdraw success! Current balance is : " + account.getDepositAmount();
     }
 }

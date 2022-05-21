@@ -40,13 +40,13 @@ public class CreateAccountImp implements CreateAccount {
                     .setAccountAge(0)
                     .setAccountType(accountType)
                     .setLoan(initialDeposit)
-                    .setTotalAmount(0.0);
+                    .setDepositAmount(0.0);
         else
             account.setUserName(userName)
                     .setAccountAge(0)
                     .setAccountType(accountType)
                     .setLoan(0.0)
-                    .setTotalAmount(initialDeposit);
+                    .setDepositAmount(initialDeposit);
 
         return bank.addNewAccountToBank(account);
     }

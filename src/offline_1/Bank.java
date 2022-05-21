@@ -31,10 +31,10 @@ public class Bank {
     public String addNewAccountToBank( Account account ) {
 
         accountList.add(account);
-        bank.setTotalBankBalance(bank.getTotalBankBalance() + account.getTotalAmount());
+        bank.setTotalBankBalance(bank.getTotalBankBalance() + account.getDepositAmount());
 
         return account.getAccountType().getAccountType() + " account for " + account.getUserName() + " Created; initial balance "
-                + account.getTotalAmount() + "$";
+                + account.getDepositAmount() + "$";
     }
 
     public int checkForAccountUsingUserName( String userName ) {

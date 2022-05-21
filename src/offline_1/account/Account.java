@@ -9,7 +9,7 @@ public class Account {
 
     private Double loan;
     private String userName;
-    private Double totalAmount;
+    private Double depositAmount;
     private Integer accountAge;
     private AccountType accountType;
 
@@ -41,12 +41,12 @@ public class Account {
         return userName;
     }
 
-    public Double getTotalAmount() {
-        return totalAmount;
+    public Double getDepositAmount() {
+        return depositAmount;
     }
 
-    public void setTotalAmount( Double totalAmount ) {
-        this.totalAmount = totalAmount;
+    public void setDepositAmount( Double depositAmount ) {
+        this.depositAmount = depositAmount;
     }
 
     public Integer getAccountAge() {

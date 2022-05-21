@@ -27,7 +27,7 @@ public class DepositAmountImp implements Deposit {
             else {
                 bank.setTotalBankBalance(bank.getTotalBankBalance() + depositAmount);
                 double currentBalance = account.getLoan() + depositAmount;
-                account.setTotalAmount(currentBalance);
+                account.setDepositAmount(currentBalance);
                 return depositAmount + " deposited; current balance " + currentBalance;
             }
         } else if (account.getAccountType() == AccountType.LOAN) {
@@ -36,13 +36,13 @@ public class DepositAmountImp implements Deposit {
             else {
                 bank.setTotalLoan(bank.getTotalLoan() - depositAmount);
                 double currentBalance = account.getLoan() - depositAmount;
-                account.setTotalAmount(currentBalance);
+                account.setDepositAmount(currentBalance);
                 return depositAmount + " deposited; current loan to pay " + currentBalance;
             }
         } else {
             bank.setTotalBankBalance(bank.getTotalBankBalance() + depositAmount);
             double currentBalance = account.getLoan() + depositAmount;
-            account.setTotalAmount(currentBalance);
+            account.setDepositAmount(currentBalance);
             return depositAmount + " deposited; current balance " + currentBalance;
         }
     }
