@@ -33,4 +33,8 @@ public class Employee {
     public List<String> getEmployeeRoles() {
         return employeeRoles;
     }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
 }

@@ -1,5 +1,8 @@
 package offline_1;
 
+import offline_1.account.domain.Account;
+import offline_1.employee.domain.Employee;
+
 import java.util.Scanner;
 
 /**
@@ -30,15 +33,26 @@ public class Application {
     }
 
     private static void decideCommand( String command ) {
-        if (command.contains("Create"))
-            openSessionForAccounts(command);
-        else if (command.contains("Open"))
+        if (command.contains("Open"))
             decideSession(command);
+        else
+            openSessionForAccounts(command);
+
     }
 
-    //TODO: Decide for whom session should be opned.
+    //TODO: complete session for employees
     private static void decideSession( String command ) {
 
+        String[] s = command.split(" ");
+        Object session = bank.decideSession(s[1]);
+
+        if (session instanceof Account) {
+            commandProcessorForAccount.openSession((Account) session);
+        } else if (session instanceof Employee) {
+
+        } else {
+            System.out.println(session.toString());
+        }
     }
 
     private static void openSessionForAccounts( String command ) {

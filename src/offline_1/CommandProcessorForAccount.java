@@ -104,6 +104,11 @@ public class CommandProcessorForAccount {
         }
     }
 
+    public void openSession( Account account ) {
+        System.out.println("Welcom back, " + account.getUserName());
+        this.userName = account.getUserName();
+    }
+
     private AccountType decideAccountType( String accountType ) {
         if (accountType.equalsIgnoreCase("Student"))
             return AccountType.STUDENT;

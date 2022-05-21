@@ -9,6 +9,7 @@ import offline_1.employee.factory.EmployeeFactory;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Amimul Ehsan
@@ -90,6 +91,24 @@ public class Bank {
         }
 
         return null;
+    }
+
+    public Object decideSession( String userName ) {
+
+        Optional<Employee> employeeOptional = employeeList.stream()
+                .filter(employee -> employee.getEmployeeName().equals(userName))
+                .findFirst();
+
+        if (employeeOptional.isPresent())
+            return employeeOptional.get();
+
+        Optional<Account> accountOptional = accountList.stream().filter(account -> account.getUserName().equals(userName))
+                .findFirst();
+
+        if (accountOptional.isPresent())
+            return accountOptional.get();
+
+        return "User is neither employee nor account holder";
     }
 
     public Double getTotalBankBalance() {
