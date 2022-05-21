@@ -1,8 +1,8 @@
 package offline_1.account.services.imp;
 
 import offline_1.Bank;
-import offline_1.account.domain.Account;
 import offline_1.account.constants.AccountType;
+import offline_1.account.domain.Account;
 import offline_1.account.services.CreateAccountService;
 
 /**
@@ -17,9 +17,9 @@ public class CreateAccountServiceImp implements CreateAccountService {
     @Override
     public String createNewAccount( String userName, AccountType accountType, Double initialDeposit ) {
 
-        int result = bank.checkForAccountUsingUserName(userName);
+        Account result = bank.checkForAccountUsingUserName(userName);
 
-        if (result == 1) {
+        if (result != null) {
             return "Bank account already exists for user : " + userName;
         } else {
             return checkForAccountCreationCondition(userName, accountType, initialDeposit);

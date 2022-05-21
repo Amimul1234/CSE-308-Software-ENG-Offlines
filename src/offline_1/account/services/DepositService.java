@@ -8,5 +8,5 @@ import offline_1.account.domain.Account;
  */
 
 public interface DepositService {
-    String depositFromAccount( Account account, Double depositAmount );
+    String depositToAccount( Account account, Double depositAmount );
 }

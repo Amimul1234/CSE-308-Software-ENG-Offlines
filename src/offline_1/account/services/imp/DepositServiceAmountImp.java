@@ -19,7 +19,7 @@ public class DepositServiceAmountImp implements DepositService {
     }
 
     @Override
-    public String depositFromAccount( Account account, Double depositAmount ) {
+    public String depositToAccount( Account account, Double depositAmount ) {
 
         if (account.getAccountType() == AccountType.FIXED_DEPOSIT) {
             if (depositAmount < 50000)
@@ -28,7 +28,7 @@ public class DepositServiceAmountImp implements DepositService {
                 bank.setTotalBankBalance(bank.getTotalBankBalance() + depositAmount);
                 double currentBalance = account.getLoan() + depositAmount;
                 account.setDepositAmount(currentBalance);
-                return depositAmount + " deposited; current balance " + currentBalance;
+                return depositAmount + " deposited; current balance " + currentBalance + "$";
             }
         } else if (account.getAccountType() == AccountType.LOAN) {
             if (depositAmount > account.getLoan())
@@ -37,13 +37,13 @@ public class DepositServiceAmountImp implements DepositService {
                 bank.setTotalLoan(bank.getTotalLoan() - depositAmount);
                 double currentBalance = account.getLoan() - depositAmount;
                 account.setDepositAmount(currentBalance);
-                return depositAmount + " deposited; current loan to pay " + currentBalance;
+                return depositAmount + " deposited; current loan to pay " + currentBalance + "$";
             }
         } else {
             bank.setTotalBankBalance(bank.getTotalBankBalance() + depositAmount);
-            double currentBalance = account.getLoan() + depositAmount;
+            double currentBalance = account.getDepositAmount() + depositAmount;
             account.setDepositAmount(currentBalance);
-            return depositAmount + " deposited; current balance " + currentBalance;
+            return depositAmount + " deposited; current balance " + currentBalance + "$";
         }
     }
 }

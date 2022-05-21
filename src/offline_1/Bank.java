@@ -82,14 +82,14 @@ public class Bank {
         return m_d + ", " + o1 + ", " + o2 + ", " + c1 + ", " + c2 + ", " + c3 + ", " + c4 + ", " + c5 + " created";
     }
 
-    public int checkForAccountUsingUserName( String userName ) {
+    public Account checkForAccountUsingUserName( String userName ) {
 
         for (Account account : accountList) {
             if (account.getUserName().equals(userName))
-                return 1;
+                return account;
         }
 
-        return -1;
+        return null;
     }
 
     public Double getTotalBankBalance() {
