@@ -8,5 +8,5 @@ import offline_1.account.Account;
  */
 
 public interface Deposit {
-    public void depositFromAccount( Account account )
+    String depositFromAccount( Account account, Double depositAmount );
 }

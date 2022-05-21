@@ -35,7 +35,10 @@ public class CreateAccountImp implements CreateAccount {
         else if (accountType == AccountType.FIXED_DEPOSIT && initialDeposit < 100000)
             return "Fixed deposit account can not have initial deposit less then 100,000$";
 
-        account = new Account(userName, accountType, initialDeposit);
+        if (accountType == AccountType.LOAN)
+            account = new Account(userName, accountType, 0.0, initialDeposit);
+        else
+            account = new Account(userName, accountType, initialDeposit, 0.0);
 
         return bank.addNewAccountToBank(account);
     }

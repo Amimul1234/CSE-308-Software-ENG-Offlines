@@ -13,6 +13,7 @@ import java.util.List;
 public class Bank {
 
     private Double totalBankBalance;
+    private Double totalLoan;
     private static Bank bank;
     private final List<Account> accountList;
 
@@ -28,6 +29,7 @@ public class Bank {
     }
 
     public String addNewAccountToBank( Account account ) {
+
         accountList.add(account);
         bank.setTotalBankBalance(bank.getTotalBankBalance() + account.getTotalAmount());
 
@@ -51,5 +53,13 @@ public class Bank {
 
     public void setTotalBankBalance( Double totalBankBalance ) {
         this.totalBankBalance = totalBankBalance;
+    }
+
+    public Double getTotalLoan() {
+        return totalLoan;
+    }
+
+    public void setTotalLoan( Double totalLoan ) {
+        this.totalLoan = totalLoan;
     }
 }
