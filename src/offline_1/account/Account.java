@@ -7,32 +7,38 @@ package offline_1.account;
 
 public class Account {
 
-    private String userName;
-    private AccountType accountType;
-    private Double totalAmount;
     private Double loan;
+    private String userName;
+    private Double totalAmount;
+    private Integer accountAge;
+    private AccountType accountType;
 
-    public Account( String userName, AccountType accountType, Double totalAmount, Double loan ) {
-        this.userName = userName;
-        this.accountType = accountType;
-        this.totalAmount = totalAmount;
+    public Account setLoan( Double loan ) {
         this.loan = loan;
+        return this;
+    }
+
+    public Account setUserName( String userName ) {
+        this.userName = userName;
+        return this;
+    }
+
+    public Account setAccountAge( Integer accountAge ) {
+        this.accountAge = accountAge;
+        return this;
+    }
+
+    public Account setAccountType( AccountType accountType ) {
+        this.accountType = accountType;
+        return this;
+    }
+
+    public Double getLoan() {
+        return loan;
     }
 
     public String getUserName() {
         return userName;
-    }
-
-    public void setUserName( String userName ) {
-        this.userName = userName;
-    }
-
-    public AccountType getAccountType() {
-        return accountType;
-    }
-
-    public void setAccountType( AccountType accountType ) {
-        this.accountType = accountType;
     }
 
     public Double getTotalAmount() {
@@ -43,11 +49,11 @@ public class Account {
         this.totalAmount = totalAmount;
     }
 
-    public Double getLoan() {
-        return loan;
+    public Integer getAccountAge() {
+        return accountAge;
     }
 
-    public void setLoan( Double loan ) {
-        this.loan = loan;
+    public AccountType getAccountType() {
+        return accountType;
     }
 }

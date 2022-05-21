@@ -28,7 +28,7 @@ public class CreateAccountImp implements CreateAccount {
 
     private String checkForAccountCreationCondition( String userName, AccountType accountType, Double initialDeposit ) {
 
-        Account account;
+        Account account = new Account();
 
         if (initialDeposit < 0)
             return "Initial deposit can not be negative";
@@ -36,9 +36,17 @@ public class CreateAccountImp implements CreateAccount {
             return "Fixed deposit account can not have initial deposit less then 100,000$";
 
         if (accountType == AccountType.LOAN)
-            account = new Account(userName, accountType, 0.0, initialDeposit);
+            account.setUserName(userName)
+                    .setAccountAge(0)
+                    .setAccountType(accountType)
+                    .setLoan(initialDeposit)
+                    .setTotalAmount(0.0);
         else
-            account = new Account(userName, accountType, initialDeposit, 0.0);
+            account.setUserName(userName)
+                    .setAccountAge(0)
+                    .setAccountType(accountType)
+                    .setLoan(0.0)
+                    .setTotalAmount(initialDeposit);
 
         return bank.addNewAccountToBank(account);
     }
