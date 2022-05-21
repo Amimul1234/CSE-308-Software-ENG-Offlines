@@ -7,6 +7,6 @@ import offline_1.account.Account;
  * @project CSE-308-offlines
  */
 
-public interface Deposit {
+public interface DepositService {
     String depositFromAccount( Account account, Double depositAmount );
 }

@@ -2,18 +2,18 @@ package offline_1.account.services.imp;
 
 import offline_1.Bank;
 import offline_1.account.Account;
-import offline_1.account.services.WithDraw;
+import offline_1.account.services.WithDrawService;
 
 /**
  * @author Amimul Ehsan
  * @project CSE-308-offlines
  */
 
-public class WithDrawImp implements WithDraw {
+public class WithDrawServiceImp implements WithDrawService {
 
     private final Bank bank;
 
-    public WithDrawImp() {
+    public WithDrawServiceImp() {
         bank = Bank.getInstance();
     }
 

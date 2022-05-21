@@ -7,6 +7,6 @@ import offline_1.account.Account;
  * @project CSE-308-offlines
  */
 
-public interface WithDraw {
-    String withDrawFromAccount( Account account, Double withDrawAmount);
+public interface QueryDepositService {
+    String queryDepositAmount( Account account );
 }

@@ -7,6 +7,6 @@ import offline_1.account.AccountType;
  * @project CSE-308-offlines
  */
 
-public interface CreateAccount {
+public interface CreateAccountService {
     String createNewAccount( String userName, AccountType accountType, Double initialDeposit );
 }

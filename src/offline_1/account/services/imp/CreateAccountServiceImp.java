@@ -3,14 +3,14 @@ package offline_1.account.services.imp;
 import offline_1.Bank;
 import offline_1.account.Account;
 import offline_1.account.AccountType;
-import offline_1.account.services.CreateAccount;
+import offline_1.account.services.CreateAccountService;
 
 /**
  * @author Amimul Ehsan
  * @project CSE-308-offlines
  */
 
-public class CreateAccountImp implements CreateAccount {
+public class CreateAccountServiceImp implements CreateAccountService {
 
     private final Bank bank = Bank.getInstance();
 

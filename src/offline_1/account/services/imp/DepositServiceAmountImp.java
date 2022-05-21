@@ -3,18 +3,18 @@ package offline_1.account.services.imp;
 import offline_1.Bank;
 import offline_1.account.Account;
 import offline_1.account.AccountType;
-import offline_1.account.services.Deposit;
+import offline_1.account.services.DepositService;
 
 /**
  * @author Amimul Ehsan
  * @project CSE-308-offlines
  */
 
-public class DepositAmountImp implements Deposit {
+public class DepositServiceAmountImp implements DepositService {
 
     private final Bank bank;
 
-    public DepositAmountImp() {
+    public DepositServiceAmountImp() {
         bank = Bank.getInstance();
     }
 
@@ -23,7 +23,7 @@ public class DepositAmountImp implements Deposit {
 
         if (account.getAccountType() == AccountType.FIXED_DEPOSIT) {
             if (depositAmount < 50000)
-                return "The deposit amount must not be less than 50,000$ for the Fixed Deposit account";
+                return "The deposit amount must not be less than 50,000$ for the Fixed DepositService account";
             else {
                 bank.setTotalBankBalance(bank.getTotalBankBalance() + depositAmount);
                 double currentBalance = account.getLoan() + depositAmount;

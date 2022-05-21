@@ -10,7 +10,7 @@ public enum AccountType {
     SAVINGS("Savings"),
     STUDENT("Student"),
     LOAN("Loan"),
-    FIXED_DEPOSIT("Fixed Deposit");
+    FIXED_DEPOSIT("Fixed DepositService");
 
     private final String accountType;
 
