@@ -35,18 +35,19 @@ public class CreateAccountServiceImp implements CreateAccountService {
         else if (accountType == AccountType.FIXED_DEPOSIT && initialDeposit < 100000)
             return "Fixed deposit account can not have initial deposit less then 100,000$";
 
-        if (accountType == AccountType.LOAN)
+        if (accountType == AccountType.LOAN) {
             account.setUserName(userName)
                     .setAccountAge(0)
                     .setAccountType(accountType)
                     .setLoan(initialDeposit)
                     .setDepositAmount(0.0);
-        else
+        } else {
             account.setUserName(userName)
                     .setAccountAge(0)
                     .setAccountType(accountType)
                     .setLoan(0.0)
                     .setDepositAmount(initialDeposit);
+        }
 
         return bank.addNewAccountToBank(account);
     }

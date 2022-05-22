@@ -35,7 +35,7 @@ public class IncrementCurrentYearServiceServiceImp implements IncrementCurrentYe
 
         bank.getAccountList()
                 .forEach(account -> {
-                    bank.setTotalBankBalance(loanInterestRate * account.getLoan());
+                    bank.setTotalBankBalance(bank.getTotalBankBalance() + loanInterestRate * account.getLoan());
                     account.setDepositAmount(account.getDepositAmount() - loanInterestRate * account.getLoan());
                 });
     }
