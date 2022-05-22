@@ -60,7 +60,7 @@ public class Application {
 
     private static void openSessionForEmployees( String command ) {
         if (command.contains("Approve"))
-            System.out.println(commandProcessorForEmployees.approveLoan(command));
+            commandProcessorForEmployees.approveLoan();
         else if (command.contains("Change"))
             System.out.println(commandProcessorForEmployees.changeInterestRate(command));
         else if (command.contains("Lookup"))

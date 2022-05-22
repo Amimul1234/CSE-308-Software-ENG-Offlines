@@ -62,18 +62,20 @@ public class CommandProcessorForEmployees {
     }
 
     public boolean changeInterestRate( String command ) {
-        return false;
 
+        return false;
     }
 
-    public boolean approveLoan( String command ) {
-        return false;
-
+    public void approveLoan() {
+        bank.getLoanRequestList().forEach(loanRequest -> {
+            if (!loanRequest.isLoanApproved()) {
+                System.out.println(loanApproveService.loanRequestApprove(employee, loanRequest.getAccount()));
+            }
+        });
     }
 
-    public boolean seeInternalFunding() {
-        return false;
-
+    public String seeInternalFunding() {
+        return internalFundService.seeInternalFundOfBank(employee);
     }
 
     public String closeSession() {

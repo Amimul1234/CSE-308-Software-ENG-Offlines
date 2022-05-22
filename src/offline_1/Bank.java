@@ -72,10 +72,10 @@ public class Bank {
 
     private String populateEmployees() {
 
-        String m_d = addNewEmployee("M D", EmployeeType.MANAGING_DIRECTOR);
+        String md = addNewEmployee("MD", EmployeeType.MANAGING_DIRECTOR);
 
-        String o1 = addNewEmployee("S1", EmployeeType.OFFICER);
-        String o2 = addNewEmployee("S2", EmployeeType.OFFICER);
+        String s1 = addNewEmployee("S1", EmployeeType.OFFICER);
+        String s2 = addNewEmployee("S2", EmployeeType.OFFICER);
 
         String c1 = addNewEmployee("C1", EmployeeType.CASHIER);
         String c2 = addNewEmployee("C2", EmployeeType.CASHIER);
@@ -83,7 +83,7 @@ public class Bank {
         String c4 = addNewEmployee("C4", EmployeeType.CASHIER);
         String c5 = addNewEmployee("C5", EmployeeType.CASHIER);
 
-        return m_d + ", " + o1 + ", " + o2 + ", " + c1 + ", " + c2 + ", " + c3 + ", " + c4 + ", " + c5 + " created";
+        return md + ", " + s1 + ", " + s2 + ", " + c1 + ", " + c2 + ", " + c3 + ", " + c4 + ", " + c5 + " created";
     }
 
     public Account checkForAccountUsingUserName( String userName ) {
