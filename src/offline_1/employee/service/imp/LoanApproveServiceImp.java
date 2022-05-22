@@ -29,6 +29,7 @@ public class LoanApproveServiceImp implements LoanApproveService {
                 .findFirst()
                 .map(loanRequest -> {
 
+                    account.setDepositAmount(account.getDepositAmount() + loanRequest.getLoanAmount());
                     account.setLoan(account.getLoan() + loanRequest.getLoanAmount());
                     bank.setTotalLoan(bank.getTotalLoan() + loanRequest.getLoanAmount());
 

@@ -40,8 +40,10 @@ public class Application {
         else if (command.contains("Exit") || command.contains("exit")) {
             System.out.println("Bank closed.");
             System.exit(0);
-        } else if (command.contains("INC"))
+        } else if (command.contains("INC")) {
             System.out.println(commandProcessorForEmployees.incrementCurrentYear());
+            return;
+        }
 
         if (commandProcessorForEmployees.checkIfSessionActive())
             openSessionForEmployees(command);

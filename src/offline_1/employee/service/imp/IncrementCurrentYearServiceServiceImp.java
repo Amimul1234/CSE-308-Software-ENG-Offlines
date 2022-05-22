@@ -34,7 +34,10 @@ public class IncrementCurrentYearServiceServiceImp implements IncrementCurrentYe
         final Double loanInterestRate = 0.10;
 
         bank.getAccountList()
-                .forEach(account -> account.setLoan(account.getLoan() + loanInterestRate * account.getLoan()));
+                .forEach(account -> {
+                    bank.setTotalBankBalance(loanInterestRate * account.getLoan());
+                    account.setDepositAmount(account.getDepositAmount() - loanInterestRate * account.getLoan());
+                });
     }
 
     private void deductServiceCharge() {
