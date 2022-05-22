@@ -6,6 +6,7 @@ import offline_1.account.domain.LoanRequest;
 import offline_1.employee.constants.EmployeeType;
 import offline_1.employee.domain.Employee;
 import offline_1.employee.factory.EmployeeFactory;
+import offline_1.util.AsciiArtGenerator;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -35,6 +36,8 @@ public class Bank {
     }
 
     private Bank() {
+
+        new AsciiArtGenerator();
 
         totalLoan = 0.0;
         totalBankBalance = 1000000.0;
@@ -71,8 +74,8 @@ public class Bank {
 
         String m_d = addNewEmployee("M D", EmployeeType.MANAGING_DIRECTOR);
 
-        String o1 = addNewEmployee("O1", EmployeeType.OFFICER);
-        String o2 = addNewEmployee("O2", EmployeeType.OFFICER);
+        String o1 = addNewEmployee("S1", EmployeeType.OFFICER);
+        String o2 = addNewEmployee("S2", EmployeeType.OFFICER);
 
         String c1 = addNewEmployee("C1", EmployeeType.CASHIER);
         String c2 = addNewEmployee("C2", EmployeeType.CASHIER);

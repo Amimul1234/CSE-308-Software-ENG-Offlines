@@ -15,12 +15,14 @@ public class Application {
     private static Bank bank;
     private static Scanner scanner;
     private static CommandProcessorForAccount commandProcessorForAccount;
+    private static CommandProcessorForEmployees commandProcessorForEmployees;
 
     public static void main( String[] args ) {
 
         bank = Bank.getInstance();
         scanner = new Scanner(System.in);
         commandProcessorForAccount = new CommandProcessorForAccount();
+        commandProcessorForEmployees = new CommandProcessorForEmployees();
 
         processInputs();
     }
@@ -35,12 +37,12 @@ public class Application {
     private static void decideCommand( String command ) {
         if (command.contains("Open"))
             decideSession(command);
+        if (commandProcessorForEmployees.checkIfSessionActive())
+            openSessionForEmployees(command);
         else
             openSessionForAccounts(command);
-
     }
 
-    //TODO: complete session for employees
     private static void decideSession( String command ) {
 
         String[] s = command.split(" ");
@@ -49,10 +51,24 @@ public class Application {
         if (session instanceof Account) {
             commandProcessorForAccount.openSession((Account) session);
         } else if (session instanceof Employee) {
-
+            System.out.println(commandProcessorForEmployees.openSession((Employee) session));
+            openSessionForEmployees(command);
         } else {
             System.out.println(session.toString());
         }
+    }
+
+    private static void openSessionForEmployees( String command ) {
+        if (command.contains("Approve"))
+            System.out.println(commandProcessorForEmployees.approveLoan(command));
+        else if (command.contains("Change"))
+            System.out.println(commandProcessorForEmployees.changeInterestRate(command));
+        else if (command.contains("Lookup"))
+            System.out.println(commandProcessorForEmployees.lookUpForAccount(command));
+        else if (command.contains("See"))
+            System.out.println(commandProcessorForEmployees.seeInternalFunding());
+        else if (command.contains("Close"))
+            System.out.println(commandProcessorForEmployees.closeSession());
     }
 
     private static void openSessionForAccounts( String command ) {

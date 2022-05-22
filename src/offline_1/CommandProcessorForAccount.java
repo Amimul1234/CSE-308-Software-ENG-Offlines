@@ -105,7 +105,7 @@ public class CommandProcessorForAccount {
     }
 
     public void openSession( Account account ) {
-        System.out.println("Welcom back, " + account.getUserName());
+        System.out.println("Welcome back, " + account.getUserName());
         this.userName = account.getUserName();
     }
 
