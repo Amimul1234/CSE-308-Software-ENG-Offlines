@@ -47,7 +47,6 @@ public class CommandProcessorForAccount {
         try {
             return createAccountService.createNewAccount(userName, accountType1, Double.parseDouble(amount));
         } catch (Exception exception) {
-            userName = null;
             System.out.println(ANSI_RED + "Exception is : " + exception + ANSI_RESET);
             return "Can not create account. Exception occurred";
         }

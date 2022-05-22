@@ -1,10 +1,13 @@
 package offline_1;
 
+import offline_1.account.constants.AccountType;
 import offline_1.account.domain.LoanRequest;
 import offline_1.employee.domain.Employee;
+import offline_1.employee.service.ChangeInterestRateService;
 import offline_1.employee.service.InternalFundService;
 import offline_1.employee.service.LoanApproveService;
 import offline_1.employee.service.LookUpService;
+import offline_1.employee.service.imp.ChangeInterestRateServiceServiceImp;
 import offline_1.employee.service.imp.InternalFundServiceImp;
 import offline_1.employee.service.imp.LoanApproveServiceImp;
 import offline_1.employee.service.imp.LookUpServiceImp;
@@ -24,12 +27,15 @@ public class CommandProcessorForEmployees {
     private final LookUpService lookUpService;
     private final LoanApproveService loanApproveService;
     private final InternalFundService internalFundService;
+    private final ChangeInterestRateService changeInterestRateService;
 
     public CommandProcessorForEmployees() {
         bank = Bank.getInstance();
+
         lookUpService = new LookUpServiceImp();
         loanApproveService = new LoanApproveServiceImp();
         internalFundService = new InternalFundServiceImp();
+        changeInterestRateService = new ChangeInterestRateServiceServiceImp();
     }
 
     public String openSession( Employee employee ) {
@@ -61,9 +67,29 @@ public class CommandProcessorForEmployees {
         }
     }
 
-    public boolean changeInterestRate( String command ) {
+    public String changeInterestRate( String command ) {
 
-        return false;
+        AccountType interestRateChangeAccountType;
+        String[] s = command.split(" ");
+
+        String accountType = s[1];
+        String currentInterestRate = s[2];
+
+        if (accountType.equals(AccountType.STUDENT.getAccountType()))
+            interestRateChangeAccountType = AccountType.STUDENT;
+        else if (accountType.equals(AccountType.SAVINGS.getAccountType()))
+            interestRateChangeAccountType = AccountType.SAVINGS;
+        else if (accountType.equals(AccountType.FIXED_DEPOSIT.getAccountType()))
+            interestRateChangeAccountType = AccountType.FIXED_DEPOSIT;
+        else
+            return "Please provide correct account type";
+
+        try {
+            return changeInterestRateService.changeInterestRateOfAccount(employee, interestRateChangeAccountType, Double.parseDouble(currentInterestRate));
+        } catch (Exception exception) {
+            System.out.println(ANSI_RED + "Exception is : " + exception + ANSI_RESET);
+            return "Can not change interest rate. Exception occurred";
+        }
     }
 
     public void approveLoan() {
@@ -86,5 +112,9 @@ public class CommandProcessorForEmployees {
 
     public boolean checkIfSessionActive() {
         return employee != null;
+    }
+
+    public boolean incrementCurrentYear() {
+        return false;
     }
 }

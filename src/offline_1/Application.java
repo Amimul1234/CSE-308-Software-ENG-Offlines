@@ -67,6 +67,8 @@ public class Application {
             System.out.println(commandProcessorForEmployees.lookUpForAccount(command));
         else if (command.contains("See"))
             System.out.println(commandProcessorForEmployees.seeInternalFunding());
+        else if (command.contains("INC"))
+            System.out.println(commandProcessorForEmployees.incrementCurrentYear());
         else if (command.contains("Close"))
             System.out.println(commandProcessorForEmployees.closeSession());
     }

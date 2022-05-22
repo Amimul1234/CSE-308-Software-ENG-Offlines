@@ -22,6 +22,7 @@ public class Bank {
     private static Bank bank;
     private Double totalLoan;
     private Double totalBankBalance;
+    private InterestRate interestRate;
     private EmployeeFactory employeeFactory;
 
     private final List<Account> accountList;
@@ -42,6 +43,7 @@ public class Bank {
         totalLoan = 0.0;
         totalBankBalance = 1000000.0;
 
+        interestRate = new InterestRate();
         employeeFactory = new EmployeeFactory();
         accountList = new LinkedList<>();
         employeeList = new LinkedList<>();
@@ -160,5 +162,17 @@ public class Bank {
 
     public List<LoanRequest> getLoanRequestList() {
         return loanRequestList;
+    }
+
+    public void changeInterestRate( AccountType accountType, Double newInterestRate ) {
+
+        if (accountType == AccountType.STUDENT)
+            bank.interestRate.setStudentAccountInterestRate(newInterestRate);
+        else if (accountType == AccountType.SAVINGS)
+            bank.interestRate.setSavingsAccountInterestRate(newInterestRate);
+        else if (accountType == AccountType.FIXED_DEPOSIT)
+            bank.interestRate.setFixedDepositInterestRate(newInterestRate);
+        else
+            System.out.println("Can not change interest rate for the account");
     }
 }
