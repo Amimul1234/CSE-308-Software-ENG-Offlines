@@ -37,6 +37,12 @@ public class Application {
     private static void decideCommand( String command ) {
         if (command.contains("Open"))
             decideSession(command);
+        else if (command.contains("Exit") || command.contains("exit")) {
+            System.out.println("Bank closed.");
+            System.exit(0);
+        } else if (command.contains("INC"))
+            System.out.println(commandProcessorForEmployees.incrementCurrentYear());
+
         if (commandProcessorForEmployees.checkIfSessionActive())
             openSessionForEmployees(command);
         else
@@ -71,6 +77,8 @@ public class Application {
             System.out.println(commandProcessorForEmployees.incrementCurrentYear());
         else if (command.contains("Close"))
             System.out.println(commandProcessorForEmployees.closeSession());
+        else if (!command.contains("Open"))
+            System.out.println("Employees don't have permission to do the operation specified.");
     }
 
     private static void openSessionForAccounts( String command ) {
@@ -86,5 +94,7 @@ public class Application {
             System.out.println(commandProcessorForAccount.requestForLoan(command));
         else if (command.contains("Close"))
             System.out.println(commandProcessorForAccount.closeCurrentSession());
+        else if (!command.contains("Open"))
+            System.out.println("User don't have permission to do the operation specified.");
     }
 }

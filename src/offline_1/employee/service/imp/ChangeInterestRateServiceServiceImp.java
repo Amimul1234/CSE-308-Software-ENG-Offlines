@@ -21,11 +21,11 @@ public class ChangeInterestRateServiceServiceImp implements ChangeInterestRateSe
     @Override
     public String changeInterestRateOfAccount( Employee employee, AccountType accountType, Double currentInterestRate ) {
 
-        if (!employee.getEmployeeRoles().contains(""))
+        if (!employee.getEmployeeRoles().contains("Change Interest Rate"))
             return "You don’t have permission for this operation";
 
         bank.changeInterestRate(accountType, currentInterestRate / 100);
 
-        return "Interest rate for " + accountType.getAccountType() + " changed";
+        return "Interest rate for " + accountType.getAccountType() + " changed to " + currentInterestRate;
     }
 }

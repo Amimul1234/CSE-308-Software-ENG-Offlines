@@ -21,8 +21,9 @@ public class Bank {
 
     private static Bank bank;
     private Double totalLoan;
+    private Integer currentYear;
     private Double totalBankBalance;
-    private InterestRate interestRate;
+    private final InterestRate interestRate;
     private EmployeeFactory employeeFactory;
 
     private final List<Account> accountList;
@@ -41,6 +42,7 @@ public class Bank {
         new AsciiArtGenerator();
 
         totalLoan = 0.0;
+        currentYear = 0;
         totalBankBalance = 1000000.0;
 
         interestRate = new InterestRate();
@@ -136,14 +138,6 @@ public class Bank {
         loanRequestList.add(loanRequest);
     }
 
-    public static Bank getBank() {
-        return bank;
-    }
-
-    public static void setBank( Bank bank ) {
-        Bank.bank = bank;
-    }
-
     public EmployeeFactory getEmployeeFactory() {
         return employeeFactory;
     }
@@ -162,6 +156,18 @@ public class Bank {
 
     public List<LoanRequest> getLoanRequestList() {
         return loanRequestList;
+    }
+
+    public Integer getCurrentYear() {
+        return currentYear;
+    }
+
+    public void setCurrentYear( Integer currentYear ) {
+        this.currentYear = currentYear;
+    }
+
+    public InterestRate getInterestRate() {
+        return interestRate;
     }
 
     public void changeInterestRate( AccountType accountType, Double newInterestRate ) {

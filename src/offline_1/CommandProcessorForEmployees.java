@@ -3,14 +3,8 @@ package offline_1;
 import offline_1.account.constants.AccountType;
 import offline_1.account.domain.LoanRequest;
 import offline_1.employee.domain.Employee;
-import offline_1.employee.service.ChangeInterestRateService;
-import offline_1.employee.service.InternalFundService;
-import offline_1.employee.service.LoanApproveService;
-import offline_1.employee.service.LookUpService;
-import offline_1.employee.service.imp.ChangeInterestRateServiceServiceImp;
-import offline_1.employee.service.imp.InternalFundServiceImp;
-import offline_1.employee.service.imp.LoanApproveServiceImp;
-import offline_1.employee.service.imp.LookUpServiceImp;
+import offline_1.employee.service.*;
+import offline_1.employee.service.imp.*;
 
 /**
  * @author Amimul Ehsan
@@ -28,6 +22,7 @@ public class CommandProcessorForEmployees {
     private final LoanApproveService loanApproveService;
     private final InternalFundService internalFundService;
     private final ChangeInterestRateService changeInterestRateService;
+    private final IncrementCurrentYearService incrementCurrentYearService;
 
     public CommandProcessorForEmployees() {
         bank = Bank.getInstance();
@@ -36,6 +31,7 @@ public class CommandProcessorForEmployees {
         loanApproveService = new LoanApproveServiceImp();
         internalFundService = new InternalFundServiceImp();
         changeInterestRateService = new ChangeInterestRateServiceServiceImp();
+        incrementCurrentYearService = new IncrementCurrentYearServiceServiceImp();
     }
 
     public String openSession( Employee employee ) {
@@ -114,7 +110,7 @@ public class CommandProcessorForEmployees {
         return employee != null;
     }
 
-    public boolean incrementCurrentYear() {
-        return false;
+    public String incrementCurrentYear() {
+        return incrementCurrentYearService.incrementCurrentYear();
     }
 }
