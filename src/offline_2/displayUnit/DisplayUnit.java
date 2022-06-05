@@ -7,9 +7,9 @@ package offline_2.displayUnit;
 
 public class DisplayUnit {
 
-    private double displayUnitTotalPrice;
     private Processor processor;
     private DisplaySystem displaySystem;
+    private double displayUnitTotalPrice;
 
     public Processor getProcessor() {
         return processor;

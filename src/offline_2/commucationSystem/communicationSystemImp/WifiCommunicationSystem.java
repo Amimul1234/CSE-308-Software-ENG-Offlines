@@ -1,5 +1,6 @@
 package offline_2.commucationSystem.communicationSystemImp;
 
+import offline_2.commucationSystem.CommunicationModule;
 import offline_2.commucationSystem.CommunicationSystem;
 
 /**
@@ -10,10 +11,17 @@ import offline_2.commucationSystem.CommunicationSystem;
 public class WifiCommunicationSystem implements CommunicationSystem {
 
     private double yearlyCommunicationCost;
+    private CommunicationModule communicationModule;
+    private static WifiCommunicationSystem wifiCommunicationSystem;
 
-    @Override
-    public String communicateWithApplication() {
-        return null;
+    private WifiCommunicationSystem() {
+
+    }
+
+    public static WifiCommunicationSystem getInstance() {
+        if (wifiCommunicationSystem == null)
+            wifiCommunicationSystem = new WifiCommunicationSystem();
+        return wifiCommunicationSystem;
     }
 
     @Override
@@ -24,5 +32,13 @@ public class WifiCommunicationSystem implements CommunicationSystem {
     @Override
     public double getYearlyCommunicationCost() {
         return yearlyCommunicationCost;
+    }
+
+    public CommunicationModule getCommunicationModule() {
+        return communicationModule;
+    }
+
+    public void setCommunicationModule( CommunicationModule communicationModule ) {
+        this.communicationModule = communicationModule;
     }
 }

@@ -6,7 +6,6 @@ package offline_2.commucationSystem;
  */
 
 public interface CommunicationSystem {
-    String communicateWithApplication();
 
     void setYearlyCommunicationCost( double yearlyCommunicationCost );
 
