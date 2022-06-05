@@ -19,16 +19,16 @@ public class DisplayUnitFactory {
     public DisplayUnit getDisplayUnit( String queueManagementSystemName ) {
         if (queueManagementSystemName.equalsIgnoreCase("Deluxe")) {
             return displayUnit = new DisplayUnit()
-                    .setDisplaySystem(new LcdPanel())
-                    .setProcessor(new RaspberryPi());
+                    .setDisplaySystem(LcdPanel.getInstance())
+                    .setProcessor(RaspberryPi.getInstance());
         } else if (queueManagementSystemName.equalsIgnoreCase("Optimal")) {
             return displayUnit = new DisplayUnit()
-                    .setProcessor(new ArduinoMega())
-                    .setDisplaySystem(new LedMatrix());
+                    .setProcessor(ArduinoMega.getInstance())
+                    .setDisplaySystem(LedMatrix.getInstance());
         } else if (queueManagementSystemName.equalsIgnoreCase("Poor")) {
             return displayUnit = new DisplayUnit()
-                    .setProcessor(new AtMega32())
-                    .setDisplaySystem(new LedMatrix());
+                    .setProcessor(AtMega32.getInstance())
+                    .setDisplaySystem(LedMatrix.getInstance());
         } else {
             System.out.println(Colors.ANSI_RED + "No valid name for the queue management system" + Colors.ANSI_RESET);
             return null;

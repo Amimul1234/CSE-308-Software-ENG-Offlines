@@ -8,7 +8,6 @@ package offline_2.commucationSystem;
 public class Communication {
 
     private int channelNumber;
-    private double totalCommunicationCost;
     private CommunicationSystem communicationSystem;
 
     public int getChannelNumber() {
@@ -17,15 +16,6 @@ public class Communication {
 
     public Communication setChannelNumber( int channelNumber ) {
         this.channelNumber = channelNumber;
-        return this;
-    }
-
-    public double getTotalCommunicationCost() {
-        return totalCommunicationCost;
-    }
-
-    public Communication setTotalCommunicationCost( double totalCommunicationCost ) {
-        this.totalCommunicationCost = totalCommunicationCost;
         return this;
     }
 
