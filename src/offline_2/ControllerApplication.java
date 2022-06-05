@@ -8,6 +8,17 @@ package offline_2;
 public class ControllerApplication {
 
     private double cost;
+    private static ControllerApplication controllerApplication;
+
+    private ControllerApplication() {
+
+    }
+
+    public static ControllerApplication getInstance() {
+        if (controllerApplication == null)
+            controllerApplication = new ControllerApplication();
+        return controllerApplication;
+    }
 
     public double getCost() {
         return cost;

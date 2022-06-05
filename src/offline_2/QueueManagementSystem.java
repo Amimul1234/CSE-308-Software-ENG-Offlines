@@ -39,6 +39,12 @@ public class QueueManagementSystem {
         initializeDisplayPanelPrices(scanner);
         initializeCommunicationModulePrices(scanner);
         initializeCommunicationYearlyCost(scanner);
+        initializeControllerApplicationCost(scanner);
+    }
+
+    private static void initializeControllerApplicationCost( Scanner scanner ) {
+        System.out.println("Please enter controller application cost:- ");
+        ControllerApplication.getInstance().setYearlyCommunicationCost(scanner.nextDouble());
     }
 
     private static void initializeCommunicationYearlyCost( Scanner scanner ) {
