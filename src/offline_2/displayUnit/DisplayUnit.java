@@ -34,6 +34,7 @@ public class DisplayUnit {
     }
 
     public double getDisplayUnitTotalPrice() {
+        calculateDisplayUnitTotalPrice();
         return displayUnitTotalPrice;
     }
 }

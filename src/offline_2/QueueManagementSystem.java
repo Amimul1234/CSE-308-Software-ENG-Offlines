@@ -1,16 +1,9 @@
 package offline_2;
 
 import offline_2.commucationSystem.Communication;
-import offline_2.commucationSystem.communicationModuleImp.SimCard;
-import offline_2.commucationSystem.communicationModuleImp.WifiModule;
-import offline_2.commucationSystem.communicationSystemImp.MobileCommunicationSystem;
-import offline_2.commucationSystem.communicationSystemImp.WifiCommunicationSystem;
+import offline_2.commucationSystem.CommunicationSystemFactory;
 import offline_2.displayUnit.DisplayUnit;
-import offline_2.displayUnit.displayPanelImp.LcdPanel;
-import offline_2.displayUnit.displayPanelImp.LedMatrix;
-import offline_2.displayUnit.processorImpl.ArduinoMega;
-import offline_2.displayUnit.processorImpl.AtMega32;
-import offline_2.displayUnit.processorImpl.RaspberryPi;
+import offline_2.displayUnit.DisplayUnitFactory;
 
 import java.util.Scanner;
 
@@ -21,64 +14,37 @@ import java.util.Scanner;
 
 public class QueueManagementSystem {
 
-    private ControllerApplication controllerApplication;
-    private Communication communication;
-    private DisplayUnit displayUnit;
-
     public static void main( String[] args ) {
+
         Scanner scanner = new Scanner(System.in);
 
-        initializePrices(scanner);
+        InitializeSeed.getInstance().initializeSeeds(scanner);
 
-        System.out.println("Please enter queue management system name:- ");
+        System.out.println();
+        System.out.println();
 
+        while (!scanner.nextLine().equalsIgnoreCase("exit")) {
+            makeQueueManagementSystem(scanner);
+        }
     }
 
-    private static void initializePrices( Scanner scanner ) {
-        initializeProcessorPrices(scanner);
-        initializeDisplayPanelPrices(scanner);
-        initializeCommunicationModulePrices(scanner);
-        initializeCommunicationYearlyCost(scanner);
-        initializeControllerApplicationCost(scanner);
-    }
+    private static void makeQueueManagementSystem( Scanner scanner ) {
 
-    private static void initializeControllerApplicationCost( Scanner scanner ) {
-        System.out.println("Please enter controller application cost:- ");
-        ControllerApplication.getInstance().setYearlyCommunicationCost(scanner.nextDouble());
-    }
+        System.out.print("Please enter queue management system name:- ");
+        DisplayUnit displayUnit = new DisplayUnitFactory().getDisplayUnit(scanner.nextLine());
 
-    private static void initializeCommunicationYearlyCost( Scanner scanner ) {
-        System.out.println("Please enter Mobile yearly communication cost:- ");
-        MobileCommunicationSystem.getInstance().setYearlyCommunicationCost(scanner.nextDouble());
+        System.out.print("Please enter channel number and service name:- ");
+        int channelNumber = scanner.nextInt();
+        scanner.nextLine();
+        String serviceName = scanner.nextLine();
+        Communication communication = new CommunicationSystemFactory().getCommunication(channelNumber, serviceName);
 
-        System.out.println("Please enter Wifi yearly communication cost:- ");
-        WifiCommunicationSystem.getInstance().setYearlyCommunicationCost(scanner.nextDouble());
-    }
+        System.out.print("Please enter total unit number:- ");
+        int totalUnit = scanner.nextInt();
 
-    private static void initializeCommunicationModulePrices( Scanner scanner ) {
-        System.out.println("Please enter Sim card price:- ");
-        SimCard.getInstance().setModulePrice(scanner.nextDouble());
+        double totalCost = displayUnit.getDisplayUnitTotalPrice() + ControllerApplication.getInstance().getCost()
+                + communication.getCommunicationSystem().getYearlyCommunicationCost() + communication.getCommunicationSystem().getCommunicationModuleCost();
 
-        System.out.println("Please enter Wifi module price:- ");
-        WifiModule.getInstance().setModulePrice(scanner.nextDouble());
-    }
-
-    private static void initializeDisplayPanelPrices( Scanner scanner ) {
-        System.out.println("Please enter LCD panel price:- ");
-        LcdPanel.getInstance().setDisplaySystemPrice(scanner.nextDouble());
-
-        System.out.println("Please enter LED matrix price:- ");
-        LedMatrix.getInstance().setDisplaySystemPrice(scanner.nextDouble());
-    }
-
-    private static void initializeProcessorPrices( Scanner scanner ) {
-        System.out.println("Please enter Arduino Mega price:- ");
-        ArduinoMega.getInstance().setProcessorPrice(scanner.nextDouble());
-
-        System.out.println("Please enter AtMega32 price:- ");
-        AtMega32.getInstance().setProcessorPrice(scanner.nextDouble());
-
-        System.out.println("Please enter Raspberry PI price:- ");
-        RaspberryPi.getInstance().setProcessorPrice(scanner.nextDouble());
+        System.out.println("Total cost is :- " + totalCost * totalUnit);
     }
 }

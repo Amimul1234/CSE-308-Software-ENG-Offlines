@@ -34,6 +34,11 @@ public class MobileCommunicationSystem implements CommunicationSystem {
         return yearlyCommunicationCost;
     }
 
+    @Override
+    public double getCommunicationModuleCost() {
+        return communicationModule.getModulePrice();
+    }
+
     public CommunicationModule getCommunicationModule() {
         return communicationModule;
     }
