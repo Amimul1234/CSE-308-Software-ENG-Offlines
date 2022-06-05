@@ -10,6 +10,17 @@ import offline_2.displayUnit.Processor;
 public class RaspberryPi implements Processor {
 
     private double processorPrice;
+    private static RaspberryPi raspberryPi;
+
+    private RaspberryPi() {
+
+    }
+
+    public static RaspberryPi getInstance() {
+        if (raspberryPi == null)
+            raspberryPi = new RaspberryPi();
+        return raspberryPi;
+    }
 
     @Override
     public void setProcessorPrice( double processorPrice ) {

@@ -10,6 +10,17 @@ import offline_2.displayUnit.DisplaySystem;
 public class LcdPanel implements DisplaySystem {
 
     private double panelPrice;
+    private static LcdPanel lcdPanel;
+
+    private LcdPanel() {
+
+    }
+
+    public static LcdPanel getInstance() {
+        if (lcdPanel == null)
+            lcdPanel = new LcdPanel();
+        return lcdPanel;
+    }
 
     @Override
     public void setDisplaySystemPrice( double displaySystemPrice ) {

@@ -10,6 +10,17 @@ import offline_2.displayUnit.Processor;
 public class ArduinoMega implements Processor {
 
     private double processorPrice;
+    private static ArduinoMega arduinoMega;
+
+    private ArduinoMega() {
+
+    }
+
+    public static ArduinoMega getInstance() {
+        if (arduinoMega == null)
+            arduinoMega = new ArduinoMega();
+        return arduinoMega;
+    }
 
     @Override
     public void setProcessorPrice( double processorPrice ) {

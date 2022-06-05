@@ -10,6 +10,17 @@ import offline_2.displayUnit.DisplaySystem;
 public class LedMatrix implements DisplaySystem {
 
     private double ledMatrixPrice;
+    private static LedMatrix ledMatrix;
+
+    private LedMatrix() {
+
+    }
+
+    public static LedMatrix getInstance() {
+        if (ledMatrix == null)
+            ledMatrix = new LedMatrix();
+        return ledMatrix;
+    }
 
     @Override
     public void setDisplaySystemPrice( double displaySystemPrice ) {
