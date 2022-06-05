@@ -9,6 +9,7 @@ public class Communication {
 
     private int channelNumber;
     private CommunicationSystem communicationSystem;
+    private CommunicationModule communicationModule;
 
     public int getChannelNumber() {
         return channelNumber;
@@ -28,5 +29,12 @@ public class Communication {
         return this;
     }
 
+    public CommunicationModule getCommunicationModule() {
+        return communicationModule;
+    }
 
+    public Communication setCommunicationModule( CommunicationModule communicationModule ) {
+        this.communicationModule = communicationModule;
+        return this;
+    }
 }

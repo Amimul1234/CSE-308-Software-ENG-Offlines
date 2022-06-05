@@ -10,6 +10,4 @@ public interface CommunicationSystem {
     void setYearlyCommunicationCost( double yearlyCommunicationCost );
 
     double getYearlyCommunicationCost();
-
-    double getCommunicationModuleCost();
 }

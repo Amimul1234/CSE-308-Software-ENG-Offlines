@@ -1,6 +1,5 @@
 package offline_2.commucationSystem.communicationSystemImp;
 
-import offline_2.commucationSystem.CommunicationModule;
 import offline_2.commucationSystem.CommunicationSystem;
 
 /**
@@ -11,7 +10,6 @@ import offline_2.commucationSystem.CommunicationSystem;
 public class MobileCommunicationSystem implements CommunicationSystem {
 
     private double yearlyCommunicationCost;
-    private CommunicationModule communicationModule;
     private static MobileCommunicationSystem mobileCommunicationSystem;
 
     private MobileCommunicationSystem() {
@@ -32,18 +30,5 @@ public class MobileCommunicationSystem implements CommunicationSystem {
     @Override
     public double getYearlyCommunicationCost() {
         return yearlyCommunicationCost;
-    }
-
-    @Override
-    public double getCommunicationModuleCost() {
-        return communicationModule.getModulePrice();
-    }
-
-    public CommunicationModule getCommunicationModule() {
-        return communicationModule;
-    }
-
-    public void setCommunicationModule( CommunicationModule communicationModule ) {
-        this.communicationModule = communicationModule;
     }
 }

@@ -34,17 +34,22 @@ public class QueueManagementSystem {
         DisplayUnit displayUnit = new DisplayUnitFactory().getDisplayUnit(scanner.nextLine());
 
         System.out.print("Please enter channel number and service name:- ");
+
         int channelNumber = scanner.nextInt();
         scanner.nextLine();
+        scanner.nextLine();
         String serviceName = scanner.nextLine();
+
         Communication communication = new CommunicationSystemFactory().getCommunication(channelNumber, serviceName);
 
         System.out.print("Please enter total unit number:- ");
         int totalUnit = scanner.nextInt();
 
         double totalCost = displayUnit.getDisplayUnitTotalPrice() + ControllerApplication.getInstance().getCost()
-                + communication.getCommunicationSystem().getYearlyCommunicationCost() + communication.getCommunicationSystem().getCommunicationModuleCost();
+                + communication.getCommunicationSystem().getYearlyCommunicationCost() + communication.getCommunicationModule().getModulePrice();
 
         System.out.println("Total cost is :- " + totalCost * totalUnit);
+        System.out.println();
+        System.out.println();
     }
 }
