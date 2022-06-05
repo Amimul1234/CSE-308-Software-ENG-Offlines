@@ -1,13 +1,13 @@
-package offline_2.displayUnit.communicationSystemImp;
+package offline_2.commucationSystem.communicationSystemImp;
 
-import offline_2.displayUnit.CommunicationSystem;
+import offline_2.commucationSystem.CommunicationSystem;
 
 /**
  * @author Amimul Ehsan
  * @project CSE-308-offlines
  */
 
-public class WifiCommunicationSystem implements CommunicationSystem {
+public class MobileCommunicationSystem implements CommunicationSystem {
 
     private double yearlyCommunicationCost;
 

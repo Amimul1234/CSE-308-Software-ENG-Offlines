@@ -1,4 +1,4 @@
-package offline_2.displayUnit;
+package offline_2.commucationSystem;
 
 /**
  * @author Amimul Ehsan
